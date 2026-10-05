@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/DiegoHaefliger/atsresumeoptimizer-backend.git
+[submodule "front"]
+	path = front
+	url = https://github.com/DiegoHaefliger/atsresumeoptimizer-front.git
