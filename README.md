@@ -121,3 +121,9 @@ Duas configurações que evitam boa parte dos tropeços:
 git config --global submodule.recurse true
 git config --global status.submoduleSummary true
 ```
+
+
+## Licença
+
+[PolyForm Noncommercial 1.0.0](LICENSE). Uso, estudo e modificação livres para fins não comerciais. Vender,
+revender ou embutir em produto ou serviço pago não é permitido.
