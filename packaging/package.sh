@@ -30,9 +30,10 @@ common=(
 	--copyright "Copyright (c) 2026 Diego Haefliger"
 	--input "$BUILD/input"
 	--main-jar app.jar
+	--main-class org.springframework.boot.loader.launch.PropertiesLauncher
 	--add-modules "$MODULES"
 	--jlink-options "--strip-debug --no-man-pages --no-header-files"
-	--java-options "-Dspring.profiles.active=desktop"
+	--java-options "-Dloader.main=com.diegohaefliger.atsresumeoptimizer.desktop.DesktopApplication"
 	--dest "$BUILD/out"
 )
 
