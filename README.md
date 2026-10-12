@@ -27,7 +27,7 @@ Este é o repositório agregador. O código vive nos submódulos:
 | Ferramenta | Versão           | Pra quê                                   |
 |------------|------------------|-------------------------------------------|
 | Java (JDK) | 25               | backend                                   |
-| Docker     | com Compose      | Postgres e MinIO, sobem sozinhos          |
+| Docker     | com Compose      | Postgres, sobe sozinho                    |
 | Node.js    | 20.19+ ou 22.12+ | front                                     |
 
 Maven não precisa estar instalado: o backend usa o `./mvnw` do próprio projeto.
@@ -49,8 +49,9 @@ cp .env.example .env      # opcional, veja abaixo
 ./mvnw spring-boot:run
 ```
 
-Ao iniciar, o backend sobe sozinho o `compose.yaml` com **Postgres** (porta 5432) e **MinIO** (9000, console em
-9001), cria as tabelas e o bucket. Não precisa rodar `docker compose up` na mão, só ter o Docker aberto.
+Ao iniciar, o backend sobe sozinho o `compose.yaml` com **Postgres** (porta 5432) e cria as tabelas. Não precisa
+rodar `docker compose up` na mão, só ter o Docker aberto. O arquivo do currículo não é guardado: no upload o texto
+e os sinais de layout vão para o banco, e o arquivo é descartado.
 
 Pronto quando aparecer `Started AtsResumeOptimizerBackendApplication`. A API fica em
 <http://localhost:8080> e a documentação em <http://localhost:8080/swagger-ui.html>.
