@@ -1,0 +1,116 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/release.yml"
+      - "packaging/**"
+      - "backend"
+      - "front"
+  workflow_dispatch:
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Instalador ${{ matrix.label }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # 22.04 gera o .deb com nomes de dependência que também instalam no 24.04 e no Debian 12.
+          - { label: Linux, os: ubuntu-22.04, type: deb }
+          - { label: Windows, os: windows-latest, type: msi }
+          - { label: macOS Apple Silicon, os: macos-15, type: dmg }
+          - { label: macOS Intel, os: macos-15-intel, type: dmg }
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: "25"
+          distribution: temurin
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: front/package-lock.json
+
+      - name: Instalar WiX (jpackage .msi)
+        if: matrix.type == 'msi'
+        run: |
+          dotnet tool install --global wix --version 5.0.2
+          wix extension add -g WixToolset.Util.wixext/5.0.2 WixToolset.UI.wixext/5.0.2
+
+      - name: Versão
+        id: version
+        run: |
+          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
+            echo "value=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=1.0.0-ci${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Empacotar
+        run: packaging/package.sh "${{ steps.version.outputs.value }}" "${{ matrix.type }}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: instalador-${{ matrix.os }}
+          path: packaging/dist/*
+          if-no-files-found: error
+
+  release:
+    name: Publicar release
+    if: github.ref_type == 'tag'
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: SHA-256
+        working-directory: dist
+        run: sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt
+
+      - uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: dist/*
+
+      - name: Criar release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          prerelease=""
+          if [[ "$GITHUB_REF_NAME" == *-* ]]; then
+            prerelease="--prerelease"
+          fi
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "ATS Resume Optimizer ${GITHUB_REF_NAME#v}" \
+            --generate-notes \
+            $prerelease
