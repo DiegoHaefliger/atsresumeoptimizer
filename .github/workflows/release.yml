@@ -1,5 +1,10 @@
 name: Release
 
+run-name: >-
+  ${{ github.event_name == 'workflow_dispatch'
+  && (inputs.version != '' && format('Release {0}', startsWith(inputs.version, 'v') && inputs.version || format('v{0}', inputs.version)) || 'Ensaio de empacotamento (sem publicar)')
+  || github.event.pull_request.title }}
+
 on:
   pull_request:
     branches: [main]
