@@ -1,19 +1,51 @@
-# ATSResumeOptimizer
+<div align="center">
 
-Sistema para analisar e adaptar currículos e aumentar a chance de passar nos filtros de ATS
-(Applicant Tracking System) usados por recrutadores.
+# ATS Resume Optimizer
 
-## O que faz
+**Analise e adapte seu currículo a cada vaga para passar nos filtros de ATS.**
 
-- **Currículos**: cadastra, importa (PDF ou DOCX, até 2 MB) e edita.
-- **Vagas**: guarda a descrição colada (sem scraping de URL).
-- **Análise**: nota de aderência ao ATS, com achados agrupados por severidade, ortografia e semântica.
-- **Preferências**: formato, remuneração, benefícios, local e empresas. Entram como critérios na nota da vaga.
-- **Reescrita**: a IA adapta o currículo à vaga, com diff de bullets, destaque dos pontos da vaga e checagem
-  para nada ser inventado. Edita antes de baixar em **PDF** ou **DOCX**.
-- Currículos apenas em PT-BR.
+[![Última versão](https://img.shields.io/github/v/release/DiegoHaefliger/atsresumeoptimizer?label=vers%C3%A3o&color=2563eb)](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest)
+[![Licença](https://img.shields.io/badge/licen%C3%A7a-PolyForm%20Noncommercial-6b7280)](LICENSE)
+![Plataformas](https://img.shields.io/badge/Windows%20%C2%B7%20macOS%20%C2%B7%20Linux-4b5563)
 
-## Baixar e instalar
+[Baixar](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest) ·
+[Instalação](#instalação) ·
+[Primeiro uso](#primeiro-uso) ·
+[Desenvolvedores](#para-desenvolvedores)
+
+</div>
+
+---
+
+ATS (Applicant Tracking System) é o software que muitos recrutadores usam para filtrar candidatos antes de qualquer
+pessoa ler o currículo. O ATS Resume Optimizer mostra como o seu currículo se sai contra uma vaga específica,
+adapta o texto com ajuda de IA sem inventar experiência e acompanha o processo seletivo até o fim.
+
+É gratuito e roda no seu computador. Os dados ficam nele; só o texto necessário vai para o provedor de IA que você escolher.
+
+- [Para quem vai usar o app](#para-quem-vai-usar-o-app)
+- [Para desenvolvedores](#para-desenvolvedores)
+
+---
+
+# Para quem vai usar o app
+
+## O que o app faz
+
+| Área | O que você consegue |
+|------|---------------------|
+| **Currículos** | Cadastrar, importar (PDF ou DOCX, até 2 MB), editar e guardar várias versões. |
+| **Vagas** | Guardar a descrição colada da vaga, com palavras-chave e código para localizar depois. |
+| **Análise ATS** | Nota de aderência à vaga, com achados por severidade, ortografia e semântica. |
+| **Adaptação** | A IA ajusta o currículo à vaga, destaca as alterações e confere que nada foi inventado. Baixe em **PDF** ou **DOCX**. |
+| **Assistente da vaga** | Perguntas técnicas prováveis de cair na entrevista, texto de apresentação e perguntas para fazer ao recrutador no fim da conversa. |
+| **Processo seletivo** | Etapas, histórico, contato e agendamento, com agenda, aviso de conflito de horário e notificações. |
+| **Google Agenda** | Opcional: os agendamentos viram eventos na sua agenda. |
+| **Preferências** | Formato, remuneração, benefícios, local e empresas entram como critério na nota da vaga. |
+
+Os currículos são analisados apenas em português do Brasil.
+
+## Instalação
 
 Não precisa instalar Java, banco de dados nem mais nada: o instalador já traz tudo.
 
@@ -141,26 +173,33 @@ ele no lugar, para ter os dados fora do computador:
 | Mac diz que o app "está danificado"                  | Baixe de novo pela página de releases; não use cópias de outros lugares.           |
 | Análise falha logo no começo                         | Nenhum provedor de IA configurado. Veja o passo 3 do primeiro uso.                 |
 
-## Para desenvolvedores
+---
 
-Este é o repositório agregador. O código vive nos submódulos:
+# Para desenvolvedores
 
-| Caminho   | Repositório                                                                                 | Conteúdo                               |
-|-----------|---------------------------------------------------------------------------------------------|----------------------------------------|
-| `backend` | [atsresumeoptimizer-backend](https://github.com/DiegoHaefliger/atsresumeoptimizer-backend) | API em Java 25 / Spring Boot           |
-| `front`   | [atsresumeoptimizer-front](https://github.com/DiegoHaefliger/atsresumeoptimizer-front)     | Interface em React + TypeScript + Vite |
+Este é o repositório agregador: ele guarda os instaladores, o workflow de release e aponta para os dois projetos,
+que são submódulos.
 
-### Pré-requisitos
+| Caminho   | Repositório | Conteúdo |
+|-----------|-------------|----------|
+| `backend` | [atsresumeoptimizer-backend](https://github.com/DiegoHaefliger/atsresumeoptimizer-backend) | API em Java 25 e Spring Boot, Liquibase e PostgreSQL |
+| `front`   | [atsresumeoptimizer-front](https://github.com/DiegoHaefliger/atsresumeoptimizer-front) | Interface em React, TypeScript e Vite |
+| `packaging` | neste repositório | Scripts do jpackage e ícones dos instaladores |
 
-| Ferramenta | Versão           | Pra quê                    |
-|------------|------------------|----------------------------|
-| Java (JDK) | 25               | backend                    |
-| Docker     | com Compose      | Postgres, sobe sozinho     |
-| Node.js    | 20.19+ ou 22.12+ | front                      |
+Cada submódulo tem o seu README, com os detalhes do projeto: profiles, variáveis de ambiente, API de integração e
+integração com o Google Agenda no backend, scripts e geração de tipos no front.
+
+## Pré-requisitos
+
+| Ferramenta | Versão           | Para quê                |
+|------------|------------------|-------------------------|
+| Java (JDK) | 25               | backend                 |
+| Docker     | com Compose      | PostgreSQL, sobe sozinho |
+| Node.js    | 20.19+ ou 22.12+ | front                   |
 
 Maven não precisa estar instalado: o backend usa o `./mvnw` do próprio projeto.
 
-### Clonar com os submódulos
+## Clonar com os submódulos
 
 ```bash
 git clone --recurse-submodules https://github.com/DiegoHaefliger/atsresumeoptimizer.git
@@ -169,27 +208,27 @@ cd atsresumeoptimizer
 
 Já clonou sem a flag? Rode `git submodule update --init --recursive`.
 
-### Subir o backend
+<a id="como-rodar"></a>
+
+## Subir o ambiente
+
+**Backend**
 
 ```bash
 cd backend
-cp .env.example .env      # opcional, veja abaixo
+cp .env.example .env      # opcional
 ./mvnw spring-boot:run
 ```
 
-Ao iniciar, o backend sobe sozinho o `compose.yaml` com **Postgres** (porta 5432) e cria as tabelas. Não precisa
-rodar `docker compose up` na mão, só ter o Docker aberto. O arquivo do currículo não é guardado: no upload o texto
-e os sinais de layout vão para o banco, e o arquivo é descartado.
+Ao iniciar, o backend sobe sozinho o `compose.yaml` com o **PostgreSQL** (porta 5432) e cria as tabelas. Basta o
+Docker estar aberto. Está pronto quando aparecer `Started AtsResumeOptimizerBackendApplication`. A API fica em
+<http://localhost:8080> e o Swagger em <http://localhost:8080/swagger-ui.html>.
 
-Pronto quando aparecer `Started AtsResumeOptimizerBackendApplication`. A API fica em
-<http://localhost:8080> e a documentação em <http://localhost:8080/swagger-ui.html>.
+O `.env` é opcional e guarda o `AI_SETTINGS_SECRET`, que criptografa as chaves de API. Sem ele, o segredo é gerado
+na primeira chave salva, em `~/.ats-resume-optimizer/ai-settings-secret` (faça backup desse arquivo). O upload de
+currículo não guarda o arquivo: o texto e os sinais de layout vão para o banco e o arquivo é descartado.
 
-O `.env` é opcional. Ele guarda o `AI_SETTINGS_SECRET`, que criptografa as chaves de API. Sem ele, o segredo é
-gerado na primeira chave salva em `~/.ats-resume-optimizer/ai-settings-secret` (faça backup desse arquivo).
-
-### Subir o front
-
-Em outro terminal, a partir da raiz:
+**Front**, em outro terminal:
 
 ```bash
 cd front
@@ -200,56 +239,29 @@ npm run dev
 
 Abra <http://localhost:5173>.
 
-### Rodar como o app instalado (sem Docker)
+## Rodar como o app instalado
 
-O profile `desktop` usa o Postgres embutido, serve o front de dentro do jar e abre o navegador. Detalhes no
+O profile `desktop` usa o PostgreSQL embutido, serve o front de dentro do jar e abre o navegador. Detalhes no
 [README do backend](backend/README.md#profile-desktop-sem-docker).
 
 ```bash
 packaging/package.sh 1.0.0 app-image       # gera packaging/build/out/ATS Resume Optimizer/
 ```
 
-### Gerar uma release
-
-Crie e envie uma tag `v<versão>`. O workflow [`release.yml`](.github/workflows/release.yml) gera os instaladores
-nos quatro sistemas, calcula o SHA-256, registra a origem do build (attestation) e publica a release:
-
-```bash
-git tag v1.0.0 && git push origin v1.0.0
-```
-
-Tag com sufixo (`v1.1.0-rc1`) vira pre-release e não dispara o aviso de atualização no app. O mesmo workflow roda
-em PR que mexe em `packaging/`, no workflow ou nos submódulos, só gerando os instaladores para conferir.
-
 Os ícones saem de [`packaging/icons/generate.py`](packaging/icons/generate.py) (precisa de Pillow).
 
-### Problemas comuns no desenvolvimento
-
-| Sintoma                                     | Causa provável e solução                                                         |
-|---------------------------------------------|----------------------------------------------------------------------------------|
-| Backend falha ao subir falando de Docker    | Docker fechado. Abra o Docker e rode de novo.                                     |
-| `Port 5432 is already in use`               | Outro Postgres na máquina. Pare ele ou mude a porta em `backend/compose.yaml`.   |
-| Front abre, mas toda tela dá erro           | Backend não está rodando em `localhost:8080`, ou ajuste `VITE_API_BASE_URL` no `.env.local`. |
-| Erro de CORS no navegador                   | Front fora de `localhost:5173`. Ajuste `CORS_ALLOWED_ORIGINS` no `backend/.env`. |
-| Análise falha logo no começo                | Nenhum provedor de IA configurado ou na fila. Veja o primeiro uso.               |
-
-### Testes
+## Testes
 
 ```bash
 cd backend && ./mvnw test    # precisa do Docker (Testcontainers)
-cd front && npm run build    # checagem de tipos + build
+cd front && npm run build    # checagem de tipos e build
 ```
 
-### Trabalhando com os submódulos
+## Submódulos
 
-Atualizar todos pro último commit:
-
-```bash
-git submodule update --remote --merge
-```
-
-Uma alteração em um submódulo exige **dois commits**: um no próprio submódulo e outro no pai, atualizando o
-ponteiro. Esquecer o segundo é o erro mais comum, e ele é silencioso: quem clonar recebe a versão antiga.
+Uma alteração em um submódulo exige **dois commits**: um no próprio submódulo e outro neste repositório,
+atualizando o ponteiro. O instalador é construído a partir do commit apontado, então esquecer o segundo é o erro
+mais comum, e ele é silencioso.
 
 ```bash
 cd backend
@@ -265,6 +277,39 @@ Duas configurações que evitam boa parte dos tropeços:
 git config --global submodule.recurse true
 git config --global status.submoduleSummary true
 ```
+
+Na release esse passo é automático (veja abaixo).
+
+## Gerar uma release
+
+Um passo só, pelo GitHub: **Actions → Release → Run workflow**, preenchendo `version` (ex.: `1.1.0`). O workflow
+[`release.yml`](.github/workflows/release.yml):
+
+1. valida a versão e confere que a tag ainda não existe;
+2. atualiza `backend` e `front` para o `main` de cada um e grava isso num commit numa branch temporária (o `main`
+   deste repositório é protegido);
+3. gera os instaladores nos quatro sistemas, uma única vez, já com a versão real;
+4. calcula o SHA-256, registra a origem do build (attestation), cria a tag `v<versão>` e publica a release;
+5. apaga a branch temporária.
+
+Versão com sufixo (`1.1.0-rc1`) vira pre-release e não dispara o aviso de atualização no app. Com o campo `version`
+vazio, o workflow só empacota, sem publicar, como ensaio. Pull request que mexe em `packaging/` ou no próprio
+workflow também roda o empacotamento para conferir.
+
+A tag aponta para um commit com os submódulos atualizados que não está no `main` deste repositório. Isso não afeta
+o instalador.
+
+## Problemas comuns no desenvolvimento
+
+| Sintoma                                  | Causa provável e solução                                                                     |
+|------------------------------------------|----------------------------------------------------------------------------------------------|
+| Backend falha ao subir falando de Docker | Docker fechado. Abra o Docker e rode de novo.                                                 |
+| `Port 5432 is already in use`            | Outro PostgreSQL na máquina. Pare ele ou mude a porta em `backend/compose.yaml`.              |
+| Front abre, mas toda tela dá erro        | Backend fora de `localhost:8080`. Ajuste `VITE_API_BASE_URL` no `.env.local`.                 |
+| Erro de CORS no navegador                | Front fora de `localhost:5173`. Ajuste `CORS_ALLOWED_ORIGINS` no `backend/.env`.              |
+| Análise falha logo no começo             | Nenhum provedor de IA configurado ou na fila. Veja o [primeiro uso](#primeiro-uso).           |
+
+---
 
 ## Licença
 
