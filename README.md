@@ -11,6 +11,9 @@ Sistema para analisar e adaptar currículos e aumentar a chance de passar nos fi
 - **Preferências**: formato, remuneração, benefícios, local e empresas. Entram como critérios na nota da vaga.
 - **Reescrita**: a IA adapta o currículo à vaga, com diff de bullets, destaque dos pontos da vaga e checagem
   para nada ser inventado. Edita antes de baixar em **PDF** ou **DOCX**.
+- **Chat com a IA**: converse com um recrutador virtual sobre vagas, entrevistas, fit cultural e dúvidas técnicas.
+  Digite `@` para anexar uma vaga; a IA passa a ver a vaga e o currículo gerado para ela. Só lê dados, nunca altera nada,
+  e suas notas pessoais nunca são enviadas.
 - Currículos apenas em PT-BR.
 
 ## Baixar e instalar
