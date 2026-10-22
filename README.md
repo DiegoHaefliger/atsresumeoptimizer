@@ -1,73 +1,45 @@
-<div align="center">
+<h1 align="center">ATS Resume Optimizer</h1>
 
-# ATS Resume Optimizer
+<p align="center">
+  Deixe seu currículo no ponto certo para cada vaga, e passe pelos filtros automáticos dos recrutadores.<br>
+  Gratuito, de código aberto e roda no seu computador.
+</p>
 
-**Analise e adapte seu currículo a cada vaga para passar nos filtros de ATS.**
-
-[![Última versão](https://img.shields.io/github/v/release/DiegoHaefliger/atsresumeoptimizer?label=vers%C3%A3o&color=2563eb)](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest)
-[![Licença](https://img.shields.io/badge/licen%C3%A7a-PolyForm%20Noncommercial-6b7280)](LICENSE)
-![Plataformas](https://img.shields.io/badge/Windows%20%C2%B7%20macOS%20%C2%B7%20Linux-4b5563)
-
-[Baixar](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest) ·
-[Instalação](#instalação) ·
-[Primeiro uso](#primeiro-uso) ·
-[Desenvolvedores](#para-desenvolvedores)
-
-</div>
+<p align="center">
+  <a href="#instalação"><b>📦 Instalação</b></a> ·
+  <a href="#desenvolvedores"><b>🛠️ Desenvolvedores</b></a> ·
+  <a href="#licença-de-uso"><b>⚖️ Licença de Uso</b></a>
+</p>
 
 ---
-
-ATS (Applicant Tracking System) é o software que muitos recrutadores usam para filtrar candidatos antes de qualquer
-pessoa ler o currículo. O ATS Resume Optimizer mostra como o seu currículo se sai contra uma vaga específica,
-adapta o texto com ajuda de IA sem inventar experiência e acompanha o processo seletivo até o fim.
-
-É gratuito e roda no seu computador. Os dados ficam nele; só o texto necessário vai para o provedor de IA que você escolher.
-
-- [Para quem vai usar o app](#para-quem-vai-usar-o-app)
-- [Para desenvolvedores](#para-desenvolvedores)
-
----
-
-# Para quem vai usar o app
-
-## O que o app faz
-
-| Área | O que você consegue |
-|------|---------------------|
-| **Currículos** | Cadastrar, importar (PDF ou DOCX, até 2 MB), editar e guardar várias versões. |
-| **Vagas** | Guardar a descrição colada da vaga, com palavras-chave e código para localizar depois. |
-| **Análise ATS** | Nota de aderência à vaga, com achados por severidade, ortografia e semântica. |
-| **Adaptação** | A IA ajusta o currículo à vaga, destaca as alterações e confere que nada foi inventado. Baixe em **PDF** ou **DOCX**. |
-| **Assistente da vaga** | Perguntas técnicas prováveis de cair na entrevista, texto de apresentação e perguntas para fazer ao recrutador no fim da conversa. |
-| **Processo seletivo** | Etapas, histórico, contato e agendamento, com agenda, aviso de conflito de horário e notificações. |
-| **Google Agenda** | Opcional: os agendamentos viram eventos na sua agenda. |
-| **Preferências** | Formato, remuneração, benefícios, local e empresas entram como critério na nota da vaga. |
-
-Os currículos são analisados apenas em português do Brasil.
 
 ## Instalação
+
+Primeiro como instalar; logo depois, o que o programa faz.
+
+### 1. Baixar e instalar
 
 Não precisa instalar Java, banco de dados nem mais nada: o instalador já traz tudo.
 
 Baixe o arquivo do seu sistema na [última versão](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest):
 
-| Sistema                         | Arquivo                                     |
-|---------------------------------|---------------------------------------------|
-| Windows 10 ou 11                | `ats-resume-optimizer-<versão>-x64.msi`     |
-| Mac com chip Apple (M1, M2...)  | `ats-resume-optimizer-<versão>-arm64.dmg`   |
-| Mac com processador Intel       | `ats-resume-optimizer-<versão>-x64.dmg`     |
-| Ubuntu, Debian, Mint            | `ats-resume-optimizer-<versão>-x64.deb`     |
+| Sistema                         | Download                                                                                                                              |
+|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| Windows 10 ou 11                | [Baixar `.msi`](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest/download/ats-resume-optimizer-windows-x64.msi)    |
+| Mac com chip Apple (M1, M2...)  | [Baixar `.dmg`](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest/download/ats-resume-optimizer-macos-arm64.dmg)    |
+| Mac com processador Intel       | [Baixar `.dmg`](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest/download/ats-resume-optimizer-macos-x64.dmg)      |
+| Ubuntu, Debian, Mint            | [Baixar `.deb`](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest/download/ats-resume-optimizer-linux-x64.deb)      |
 
 Não sabe qual é o seu Mac? Menu Apple → **Sobre Este Mac**: se aparecer "Chip Apple M...", é o de chip Apple.
 
-### Por que aparece um aviso de segurança
+#### Por que aparece um aviso de segurança
 
 O app é gratuito e de código aberto, e não tem o certificado pago que Windows e macOS usam para reconhecer o
 autor. Por isso o sistema avisa que não conhece o programa. Isso é esperado; siga os passos abaixo uma vez só.
 
 Para conferir que o arquivo é o original, compare o SHA-256 com o `SHA256SUMS.txt` da mesma página de download.
 
-### Windows
+#### Windows
 
 1. Abra o `.msi` baixado. Se o navegador avisar que o arquivo "não é baixado com frequência", escolha **Manter**.
 2. Na tela azul "O Windows protegeu o computador", clique em **Mais informações** e depois em
@@ -78,7 +50,7 @@ Para conferir que o arquivo é o original, compare o SHA-256 com o `SHA256SUMS.t
 Se o Windows não mostrar o botão **Executar assim mesmo**, o **Controle Inteligente de Aplicativos** está
 ligado e bloqueia programas sem certificado. Nesse caso não dá para instalar nesse computador.
 
-### macOS
+#### macOS
 
 1. Abra o `.dmg` e arraste **ATS Resume Optimizer** para a pasta **Aplicativos**.
 2. Abra o app pela pasta Aplicativos. Vai aparecer um aviso dizendo que a Apple não pôde verificá-lo: clique em
@@ -87,7 +59,7 @@ ligado e bloqueia programas sem certificado. Nesse caso não dá para instalar n
    do nome do app. Confirme com a sua senha.
 4. Das próximas vezes ele abre direto.
 
-### Linux
+#### Linux
 
 Dê dois cliques no `.deb` para instalar pela central de programas, ou pelo terminal:
 
@@ -97,7 +69,7 @@ sudo apt install ./ats-resume-optimizer-<versão>-x64.deb
 
 O app aparece no menu, na categoria Escritório.
 
-## Primeiro uso
+### 2. Primeiro uso
 
 1. Ao abrir, aparece uma janela "está abrindo". Na primeira vez pode levar um minuto: é quando o banco de dados é
    criado.
@@ -115,7 +87,7 @@ navegador de volta.
 
 Quando sair uma versão nova, aparece um aviso no topo do app com o botão **Baixar**.
 
-## Seus dados
+### 3. Onde ficam seus dados
 
 Tudo fica numa pasta do seu usuário, fora da pasta onde o programa é instalado:
 
@@ -145,7 +117,7 @@ um backup antes de atualizar.
 `sudo apt remove ats-resume-optimizer` no Linux). A pasta de dados não é apagada; apague à mão se quiser remover
 tudo.
 
-## Banco de dados externo (opcional)
+### 4. Banco de dados externo (opcional)
 
 Por padrão o banco fica dentro do computador. Quem tem um PostgreSQL num servidor (uma VPS, por exemplo) pode usar
 ele no lugar, para ter os dados fora do computador:
@@ -163,7 +135,7 @@ ele no lugar, para ter os dados fora do computador:
 - Um computador por banco: as chaves de IA são protegidas pelo `ai-settings-secret` de cada computador. Para usar o
   mesmo banco em outro computador, cadastre as chaves de IA de novo nele.
 
-## Problemas comuns
+### 5. Algo deu errado?
 
 | Sintoma                                              | O que fazer                                                                        |
 |------------------------------------------------------|------------------------------------------------------------------------------------|
@@ -173,33 +145,47 @@ ele no lugar, para ter os dados fora do computador:
 | Mac diz que o app "está danificado"                  | Baixe de novo pela página de releases; não use cópias de outros lugares.           |
 | Análise falha logo no começo                         | Nenhum provedor de IA configurado. Veja o passo 3 do primeiro uso.                 |
 
+### 6. O que o programa faz
+
+Muitas empresas usam um **ATS** (Applicant Tracking System), um sistema que lê e pontua currículos antes de
+qualquer pessoa ver. O ATS Resume Optimizer ajuda você a chegar bem nessa etapa:
+
+- **Currículos**: cadastre, importe (PDF ou DOCX, até 2 MB) e edite. Os currículos são apenas em PT-BR.
+- **Vagas**: cole a descrição da vaga e guarde tudo num lugar só (sem scraping de URL).
+- **Análise**: receba uma nota de aderência ao ATS, com os achados agrupados por severidade, ortografia e semântica.
+- **Preferências**: informe formato, remuneração, benefícios, local e empresas. Elas entram como critérios na nota da vaga.
+- **Assistente da vaga**: perguntas técnicas prováveis na entrevista, texto de apresentação e perguntas para fazer ao
+  recrutador no fim da conversa.
+- **Processo seletivo**: etapas, histórico, contato e agendamento, com aviso de conflito de horário e notificações.
+  Opcionalmente, os agendamentos viram eventos no **Google Agenda**.
+- **Reescrita com IA**: o currículo é adaptado à vaga, com diff de bullets, destaque dos pontos da vaga e checagem
+  para nada ser inventado. Você edita antes de baixar em **PDF** ou **DOCX**.
+- **Chat com a IA**: converse com um recrutador virtual sobre vagas, entrevistas, fit cultural e dúvidas técnicas.
+  Digite `@` para anexar uma vaga; a IA passa a ver a vaga e o currículo gerado para ela. Só lê dados, nunca altera
+  nada, e suas notas pessoais nunca são enviadas.
+
 ---
 
-# Para desenvolvedores
+## Desenvolvedores
 
-Este é o repositório agregador: ele guarda os instaladores, o workflow de release e aponta para os dois projetos,
-que são submódulos.
+Este é o repositório agregador. O código vive nos submódulos:
 
-| Caminho   | Repositório | Conteúdo |
-|-----------|-------------|----------|
-| `backend` | [atsresumeoptimizer-backend](https://github.com/DiegoHaefliger/atsresumeoptimizer-backend) | API em Java 25 e Spring Boot, Liquibase e PostgreSQL |
-| `front`   | [atsresumeoptimizer-front](https://github.com/DiegoHaefliger/atsresumeoptimizer-front) | Interface em React, TypeScript e Vite |
-| `packaging` | neste repositório | Scripts do jpackage e ícones dos instaladores |
+| Caminho   | Repositório                                                                                 | Conteúdo                               |
+|-----------|---------------------------------------------------------------------------------------------|----------------------------------------|
+| `backend` | [atsresumeoptimizer-backend](https://github.com/DiegoHaefliger/atsresumeoptimizer-backend) | API em Java 25 / Spring Boot           |
+| `front`   | [atsresumeoptimizer-front](https://github.com/DiegoHaefliger/atsresumeoptimizer-front)     | Interface em React + TypeScript + Vite |
 
-Cada submódulo tem o seu README, com os detalhes do projeto: profiles, variáveis de ambiente, API de integração e
-integração com o Google Agenda no backend, scripts e geração de tipos no front.
+### Pré-requisitos
 
-## Pré-requisitos
-
-| Ferramenta | Versão           | Para quê                |
-|------------|------------------|-------------------------|
-| Java (JDK) | 25               | backend                 |
-| Docker     | com Compose      | PostgreSQL, sobe sozinho |
-| Node.js    | 20.19+ ou 22.12+ | front                   |
+| Ferramenta | Versão           | Pra quê                    |
+|------------|------------------|----------------------------|
+| Java (JDK) | 25               | backend                    |
+| Docker     | com Compose      | Postgres, sobe sozinho     |
+| Node.js    | 20.19+ ou 22.12+ | front                      |
 
 Maven não precisa estar instalado: o backend usa o `./mvnw` do próprio projeto.
 
-## Clonar com os submódulos
+### Clonar com os submódulos
 
 ```bash
 git clone --recurse-submodules https://github.com/DiegoHaefliger/atsresumeoptimizer.git
@@ -208,27 +194,27 @@ cd atsresumeoptimizer
 
 Já clonou sem a flag? Rode `git submodule update --init --recursive`.
 
-<a id="como-rodar"></a>
-
-## Subir o ambiente
-
-**Backend**
+### Subir o backend
 
 ```bash
 cd backend
-cp .env.example .env      # opcional
+cp .env.example .env      # opcional, veja abaixo
 ./mvnw spring-boot:run
 ```
 
-Ao iniciar, o backend sobe sozinho o `compose.yaml` com o **PostgreSQL** (porta 5432) e cria as tabelas. Basta o
-Docker estar aberto. Está pronto quando aparecer `Started AtsResumeOptimizerBackendApplication`. A API fica em
-<http://localhost:8080> e o Swagger em <http://localhost:8080/swagger-ui.html>.
+Ao iniciar, o backend sobe sozinho o `compose.yaml` com **Postgres** (porta 5432) e cria as tabelas. Não precisa
+rodar `docker compose up` na mão, só ter o Docker aberto. O arquivo do currículo não é guardado: no upload o texto
+e os sinais de layout vão para o banco, e o arquivo é descartado.
 
-O `.env` é opcional e guarda o `AI_SETTINGS_SECRET`, que criptografa as chaves de API. Sem ele, o segredo é gerado
-na primeira chave salva, em `~/.ats-resume-optimizer/ai-settings-secret` (faça backup desse arquivo). O upload de
-currículo não guarda o arquivo: o texto e os sinais de layout vão para o banco e o arquivo é descartado.
+Pronto quando aparecer `Started AtsResumeOptimizerBackendApplication`. A API fica em
+<http://localhost:8080> e a documentação em <http://localhost:8080/swagger-ui.html>.
 
-**Front**, em outro terminal:
+O `.env` é opcional. Ele guarda o `AI_SETTINGS_SECRET`, que criptografa as chaves de API. Sem ele, o segredo é
+gerado na primeira chave salva em `~/.ats-resume-optimizer/ai-settings-secret` (faça backup desse arquivo).
+
+### Subir o front
+
+Em outro terminal, a partir da raiz:
 
 ```bash
 cd front
@@ -239,29 +225,60 @@ npm run dev
 
 Abra <http://localhost:5173>.
 
-## Rodar como o app instalado
+### Rodar como o app instalado (sem Docker)
 
-O profile `desktop` usa o PostgreSQL embutido, serve o front de dentro do jar e abre o navegador. Detalhes no
+O profile `desktop` usa o Postgres embutido, serve o front de dentro do jar e abre o navegador. Detalhes no
 [README do backend](backend/README.md#profile-desktop-sem-docker).
 
 ```bash
 packaging/package.sh 1.0.0 app-image       # gera packaging/build/out/ATS Resume Optimizer/
 ```
 
+### Gerar uma release
+
+Um passo só, pelo GitHub: **Actions → Release → Run workflow**, preenchendo `version` (ex.: `1.1.0`). O workflow
+[`release.yml`](.github/workflows/release.yml):
+
+1. valida a versão e confere que a tag ainda não existe;
+2. atualiza `backend` e `front` para o `main` de cada um e grava isso num commit numa branch temporária (o `main`
+   deste repositório é protegido);
+3. gera os instaladores nos quatro sistemas, uma única vez, já com a versão real;
+4. calcula o SHA-256, registra a origem do build (attestation), cria a tag `v<versão>` e publica a release;
+5. apaga a branch temporária.
+
+Versão com sufixo (`1.1.0-rc1`) vira pre-release e não dispara o aviso de atualização no app. Com o campo `version`
+vazio, o workflow só empacota, sem publicar, como ensaio. Pull request que mexe em `packaging/` ou no próprio
+workflow também roda o empacotamento para conferir.
+
 Os ícones saem de [`packaging/icons/generate.py`](packaging/icons/generate.py) (precisa de Pillow).
 
-## Testes
+### Problemas comuns no desenvolvimento
+
+| Sintoma                                     | Causa provável e solução                                                         |
+|---------------------------------------------|----------------------------------------------------------------------------------|
+| Backend falha ao subir falando de Docker    | Docker fechado. Abra o Docker e rode de novo.                                     |
+| `Port 5432 is already in use`               | Outro Postgres na máquina. Pare ele ou mude a porta em `backend/compose.yaml`.   |
+| Front abre, mas toda tela dá erro           | Backend não está rodando em `localhost:8080`, ou ajuste `VITE_API_BASE_URL` no `.env.local`. |
+| Erro de CORS no navegador                   | Front fora de `localhost:5173`. Ajuste `CORS_ALLOWED_ORIGINS` no `backend/.env`. |
+| Análise falha logo no começo                | Nenhum provedor de IA configurado ou na fila. Veja o primeiro uso.               |
+
+### Testes
 
 ```bash
 cd backend && ./mvnw test    # precisa do Docker (Testcontainers)
-cd front && npm run build    # checagem de tipos e build
+cd front && npm run build    # checagem de tipos + build
 ```
 
-## Submódulos
+### Trabalhando com os submódulos
 
-Uma alteração em um submódulo exige **dois commits**: um no próprio submódulo e outro neste repositório,
-atualizando o ponteiro. O instalador é construído a partir do commit apontado, então esquecer o segundo é o erro
-mais comum, e ele é silencioso.
+Atualizar todos pro último commit:
+
+```bash
+git submodule update --remote --merge
+```
+
+Uma alteração em um submódulo exige **dois commits**: um no próprio submódulo e outro no pai, atualizando o
+ponteiro. Esquecer o segundo é o erro mais comum, e ele é silencioso: quem clonar recebe a versão antiga.
 
 ```bash
 cd backend
@@ -278,40 +295,15 @@ git config --global submodule.recurse true
 git config --global status.submoduleSummary true
 ```
 
-Na release esse passo é automático (veja abaixo).
-
-## Gerar uma release
-
-Um passo só, pelo GitHub: **Actions → Release → Run workflow**, preenchendo `version` (ex.: `1.1.0`). O workflow
-[`release.yml`](.github/workflows/release.yml):
-
-1. valida a versão e confere que a tag ainda não existe;
-2. atualiza `backend` e `front` para o `main` de cada um e grava isso num commit numa branch temporária (o `main`
-   deste repositório é protegido);
-3. gera os instaladores nos quatro sistemas, uma única vez, já com a versão real;
-4. calcula o SHA-256, registra a origem do build (attestation), cria a tag `v<versão>` e publica a release;
-5. apaga a branch temporária.
-
-Versão com sufixo (`1.1.0-rc1`) vira pre-release e não dispara o aviso de atualização no app. Com o campo `version`
-vazio, o workflow só empacota, sem publicar, como ensaio. Pull request que mexe em `packaging/` ou no próprio
-workflow também roda o empacotamento para conferir.
-
-A tag aponta para um commit com os submódulos atualizados que não está no `main` deste repositório. Isso não afeta
-o instalador.
-
-## Problemas comuns no desenvolvimento
-
-| Sintoma                                  | Causa provável e solução                                                                     |
-|------------------------------------------|----------------------------------------------------------------------------------------------|
-| Backend falha ao subir falando de Docker | Docker fechado. Abra o Docker e rode de novo.                                                 |
-| `Port 5432 is already in use`            | Outro PostgreSQL na máquina. Pare ele ou mude a porta em `backend/compose.yaml`.              |
-| Front abre, mas toda tela dá erro        | Backend fora de `localhost:8080`. Ajuste `VITE_API_BASE_URL` no `.env.local`.                 |
-| Erro de CORS no navegador                | Front fora de `localhost:5173`. Ajuste `CORS_ALLOWED_ORIGINS` no `backend/.env`.              |
-| Análise falha logo no começo             | Nenhum provedor de IA configurado ou na fila. Veja o [primeiro uso](#primeiro-uso).           |
-
 ---
 
-## Licença
+## Licença de Uso
 
-[PolyForm Noncommercial 1.0.0](LICENSE). Uso, estudo e modificação livres para fins não comerciais. Vender,
-revender ou embutir em produto ou serviço pago não é permitido.
+Este projeto usa a licença [PolyForm Noncommercial 1.0.0](LICENSE).
+
+| Pode | Não pode |
+|------|----------|
+| Usar, estudar e modificar para fins **não comerciais** | Vender ou revender o programa |
+| Compartilhar com outras pessoas, mantendo a licença | Embutir em produto ou serviço pago |
+
+Leia o texto completo no arquivo [LICENSE](LICENSE).
