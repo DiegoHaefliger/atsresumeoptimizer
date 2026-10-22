@@ -143,6 +143,19 @@ jobs:
           path: dist
           merge-multiple: true
 
+      # Nomes fixos (sem versão) para o README apontar sempre para a última
+      # versão via releases/latest/download/<arquivo>. Ficam em dist/, então
+      # entram no SHA256SUMS.txt, na attestation e na release.
+      - name: Cópias sem versão nos nomes
+        working-directory: dist
+        env:
+          VERSION: ${{ needs.prepare.outputs.version }}
+        run: |
+          cp "ats-resume-optimizer-$VERSION-x64.msi"   ats-resume-optimizer-windows-x64.msi
+          cp "ats-resume-optimizer-$VERSION-arm64.dmg" ats-resume-optimizer-macos-arm64.dmg
+          cp "ats-resume-optimizer-$VERSION-x64.dmg"   ats-resume-optimizer-macos-x64.dmg
+          cp "ats-resume-optimizer-$VERSION-x64.deb"   ats-resume-optimizer-linux-x64.deb
+
       - name: SHA-256
         working-directory: dist
         run: sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt
