@@ -19,12 +19,12 @@ Não precisa instalar Java, banco de dados nem mais nada: o instalador já traz 
 
 Baixe o arquivo do seu sistema na [última versão](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest):
 
-| Sistema                         | Arquivo                                     |
-|---------------------------------|---------------------------------------------|
-| Windows 10 ou 11                | `ats-resume-optimizer-<versão>-x64.msi`     |
-| Mac com chip Apple (M1, M2...)  | `ats-resume-optimizer-<versão>-arm64.dmg`   |
-| Mac com processador Intel       | `ats-resume-optimizer-<versão>-x64.dmg`     |
-| Ubuntu, Debian, Mint            | `ats-resume-optimizer-<versão>-x64.deb`     |
+| Sistema                         | Download                                                                                                                              |
+|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| Windows 10 ou 11                | [Baixar `.msi`](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest/download/ats-resume-optimizer-windows-x64.msi)    |
+| Mac com chip Apple (M1, M2...)  | [Baixar `.dmg`](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest/download/ats-resume-optimizer-macos-arm64.dmg)    |
+| Mac com processador Intel       | [Baixar `.dmg`](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest/download/ats-resume-optimizer-macos-x64.dmg)      |
+| Ubuntu, Debian, Mint            | [Baixar `.deb`](https://github.com/DiegoHaefliger/atsresumeoptimizer/releases/latest/download/ats-resume-optimizer-linux-x64.deb)      |
 
 Não sabe qual é o seu Mac? Menu Apple → **Sobre Este Mac**: se aparecer "Chip Apple M...", é o de chip Apple.
 
