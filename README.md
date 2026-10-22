@@ -1,22 +1,23 @@
-# ATSResumeOptimizer
+<h1 align="center">ATS Resume Optimizer</h1>
 
-Sistema para analisar e adaptar currículos e aumentar a chance de passar nos filtros de ATS
-(Applicant Tracking System) usados por recrutadores.
+<p align="center">
+  Deixe seu currículo no ponto certo para cada vaga, e passe pelos filtros automáticos dos recrutadores.<br>
+  Gratuito, de código aberto e roda no seu computador.
+</p>
 
-## O que faz
+<p align="center">
+  <a href="#instalação"><b>📦 Instalação</b></a> ·
+  <a href="#desenvolvedores"><b>🛠️ Desenvolvedores</b></a> ·
+  <a href="#licença-de-uso"><b>⚖️ Licença de Uso</b></a>
+</p>
 
-- **Currículos**: cadastra, importa (PDF ou DOCX, até 2 MB) e edita.
-- **Vagas**: guarda a descrição colada (sem scraping de URL).
-- **Análise**: nota de aderência ao ATS, com achados agrupados por severidade, ortografia e semântica.
-- **Preferências**: formato, remuneração, benefícios, local e empresas. Entram como critérios na nota da vaga.
-- **Reescrita**: a IA adapta o currículo à vaga, com diff de bullets, destaque dos pontos da vaga e checagem
-  para nada ser inventado. Edita antes de baixar em **PDF** ou **DOCX**.
-- **Chat com a IA**: converse com um recrutador virtual sobre vagas, entrevistas, fit cultural e dúvidas técnicas.
-  Digite `@` para anexar uma vaga; a IA passa a ver a vaga e o currículo gerado para ela. Só lê dados, nunca altera nada,
-  e suas notas pessoais nunca são enviadas.
-- Currículos apenas em PT-BR.
+---
 
-## Baixar e instalar
+## Instalação
+
+Primeiro como instalar; logo depois, o que o programa faz.
+
+### 1. Baixar e instalar
 
 Não precisa instalar Java, banco de dados nem mais nada: o instalador já traz tudo.
 
@@ -31,14 +32,14 @@ Baixe o arquivo do seu sistema na [última versão](https://github.com/DiegoHaef
 
 Não sabe qual é o seu Mac? Menu Apple → **Sobre Este Mac**: se aparecer "Chip Apple M...", é o de chip Apple.
 
-### Por que aparece um aviso de segurança
+#### Por que aparece um aviso de segurança
 
 O app é gratuito e de código aberto, e não tem o certificado pago que Windows e macOS usam para reconhecer o
 autor. Por isso o sistema avisa que não conhece o programa. Isso é esperado; siga os passos abaixo uma vez só.
 
 Para conferir que o arquivo é o original, compare o SHA-256 com o `SHA256SUMS.txt` da mesma página de download.
 
-### Windows
+#### Windows
 
 1. Abra o `.msi` baixado. Se o navegador avisar que o arquivo "não é baixado com frequência", escolha **Manter**.
 2. Na tela azul "O Windows protegeu o computador", clique em **Mais informações** e depois em
@@ -49,7 +50,7 @@ Para conferir que o arquivo é o original, compare o SHA-256 com o `SHA256SUMS.t
 Se o Windows não mostrar o botão **Executar assim mesmo**, o **Controle Inteligente de Aplicativos** está
 ligado e bloqueia programas sem certificado. Nesse caso não dá para instalar nesse computador.
 
-### macOS
+#### macOS
 
 1. Abra o `.dmg` e arraste **ATS Resume Optimizer** para a pasta **Aplicativos**.
 2. Abra o app pela pasta Aplicativos. Vai aparecer um aviso dizendo que a Apple não pôde verificá-lo: clique em
@@ -58,7 +59,7 @@ ligado e bloqueia programas sem certificado. Nesse caso não dá para instalar n
    do nome do app. Confirme com a sua senha.
 4. Das próximas vezes ele abre direto.
 
-### Linux
+#### Linux
 
 Dê dois cliques no `.deb` para instalar pela central de programas, ou pelo terminal:
 
@@ -68,7 +69,7 @@ sudo apt install ./ats-resume-optimizer-<versão>-x64.deb
 
 O app aparece no menu, na categoria Escritório.
 
-## Primeiro uso
+### 2. Primeiro uso
 
 1. Ao abrir, aparece uma janela "está abrindo". Na primeira vez pode levar um minuto: é quando o banco de dados é
    criado.
@@ -86,7 +87,7 @@ navegador de volta.
 
 Quando sair uma versão nova, aparece um aviso no topo do app com o botão **Baixar**.
 
-## Seus dados
+### 3. Onde ficam seus dados
 
 Tudo fica numa pasta do seu usuário, fora da pasta onde o programa é instalado:
 
@@ -116,7 +117,7 @@ um backup antes de atualizar.
 `sudo apt remove ats-resume-optimizer` no Linux). A pasta de dados não é apagada; apague à mão se quiser remover
 tudo.
 
-## Banco de dados externo (opcional)
+### 4. Banco de dados externo (opcional)
 
 Por padrão o banco fica dentro do computador. Quem tem um PostgreSQL num servidor (uma VPS, por exemplo) pode usar
 ele no lugar, para ter os dados fora do computador:
@@ -134,7 +135,7 @@ ele no lugar, para ter os dados fora do computador:
 - Um computador por banco: as chaves de IA são protegidas pelo `ai-settings-secret` de cada computador. Para usar o
   mesmo banco em outro computador, cadastre as chaves de IA de novo nele.
 
-## Problemas comuns
+### 5. Algo deu errado?
 
 | Sintoma                                              | O que fazer                                                                        |
 |------------------------------------------------------|------------------------------------------------------------------------------------|
@@ -144,7 +145,24 @@ ele no lugar, para ter os dados fora do computador:
 | Mac diz que o app "está danificado"                  | Baixe de novo pela página de releases; não use cópias de outros lugares.           |
 | Análise falha logo no começo                         | Nenhum provedor de IA configurado. Veja o passo 3 do primeiro uso.                 |
 
-## Para desenvolvedores
+### 6. O que o programa faz
+
+Muitas empresas usam um **ATS** (Applicant Tracking System), um sistema que lê e pontua currículos antes de
+qualquer pessoa ver. O ATS Resume Optimizer ajuda você a chegar bem nessa etapa:
+
+- **Currículos**: cadastre, importe (PDF ou DOCX, até 2 MB) e edite. Os currículos são apenas em PT-BR.
+- **Vagas**: cole a descrição da vaga e guarde tudo num lugar só (sem scraping de URL).
+- **Análise**: receba uma nota de aderência ao ATS, com os achados agrupados por severidade, ortografia e semântica.
+- **Preferências**: informe formato, remuneração, benefícios, local e empresas. Elas entram como critérios na nota da vaga.
+- **Reescrita com IA**: o currículo é adaptado à vaga, com diff de bullets, destaque dos pontos da vaga e checagem
+  para nada ser inventado. Você edita antes de baixar em **PDF** ou **DOCX**.
+- **Chat com a IA**: converse com um recrutador virtual sobre vagas, entrevistas, fit cultural e dúvidas técnicas.
+  Digite `@` para anexar uma vaga; a IA passa a ver a vaga e o currículo gerado para ela. Só lê dados, nunca altera
+  nada, e suas notas pessoais nunca são enviadas.
+
+---
+
+## Desenvolvedores
 
 Este é o repositório agregador. O código vive nos submódulos:
 
@@ -269,7 +287,15 @@ git config --global submodule.recurse true
 git config --global status.submoduleSummary true
 ```
 
-## Licença
+---
 
-[PolyForm Noncommercial 1.0.0](LICENSE). Uso, estudo e modificação livres para fins não comerciais. Vender,
-revender ou embutir em produto ou serviço pago não é permitido.
+## Licença de Uso
+
+Este projeto usa a licença [PolyForm Noncommercial 1.0.0](LICENSE).
+
+| Pode | Não pode |
+|------|----------|
+| Usar, estudar e modificar para fins **não comerciais** | Vender ou revender o programa |
+| Compartilhar com outras pessoas, mantendo a licença | Embutir em produto ou serviço pago |
+
+Leia o texto completo no arquivo [LICENSE](LICENSE).
