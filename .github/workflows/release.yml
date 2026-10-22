@@ -138,6 +138,21 @@ jobs:
           path: dist
           merge-multiple: true
 
+      # Nomes fixos (sem versão) para o README apontar sempre para a última
+      # versão via releases/latest/download/<arquivo>. A versão fica na tag e
+      # no título da release. Renomeia antes do SHA-256 e da attestation, então
+      # os dois já enxergam só os nomes finais.
+      - name: Renomear instaladores para nomes fixos
+        working-directory: dist
+        env:
+          VERSION: ${{ needs.prepare.outputs.version }}
+        run: |
+          mv "ats-resume-optimizer-$VERSION-x64.msi"   ats-resume-optimizer-windows-x64.msi
+          mv "ats-resume-optimizer-$VERSION-arm64.dmg" ats-resume-optimizer-macos-arm64.dmg
+          mv "ats-resume-optimizer-$VERSION-x64.dmg"   ats-resume-optimizer-macos-x64.dmg
+          mv "ats-resume-optimizer-$VERSION-x64.deb"   ats-resume-optimizer-linux-x64.deb
+          ls -l
+
       - name: SHA-256
         working-directory: dist
         run: sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt

@@ -154,6 +154,10 @@ qualquer pessoa ver. O ATS Resume Optimizer ajuda você a chegar bem nessa etapa
 - **Vagas**: cole a descrição da vaga e guarde tudo num lugar só (sem scraping de URL).
 - **Análise**: receba uma nota de aderência ao ATS, com os achados agrupados por severidade, ortografia e semântica.
 - **Preferências**: informe formato, remuneração, benefícios, local e empresas. Elas entram como critérios na nota da vaga.
+- **Assistente da vaga**: perguntas técnicas prováveis na entrevista, texto de apresentação e perguntas para fazer ao
+  recrutador no fim da conversa.
+- **Processo seletivo**: etapas, histórico, contato e agendamento, com aviso de conflito de horário e notificações.
+  Opcionalmente, os agendamentos viram eventos no **Google Agenda**.
 - **Reescrita com IA**: o currículo é adaptado à vaga, com diff de bullets, destaque dos pontos da vaga e checagem
   para nada ser inventado. Você edita antes de baixar em **PDF** ou **DOCX**.
 - **Chat com a IA**: converse com um recrutador virtual sobre vagas, entrevistas, fit cultural e dúvidas técnicas.
@@ -232,15 +236,19 @@ packaging/package.sh 1.0.0 app-image       # gera packaging/build/out/ATS Resume
 
 ### Gerar uma release
 
-Crie e envie uma tag `v<versão>`. O workflow [`release.yml`](.github/workflows/release.yml) gera os instaladores
-nos quatro sistemas, calcula o SHA-256, registra a origem do build (attestation) e publica a release:
+Um passo só, pelo GitHub: **Actions → Release → Run workflow**, preenchendo `version` (ex.: `1.1.0`). O workflow
+[`release.yml`](.github/workflows/release.yml):
 
-```bash
-git tag v1.0.0 && git push origin v1.0.0
-```
+1. valida a versão e confere que a tag ainda não existe;
+2. atualiza `backend` e `front` para o `main` de cada um e grava isso num commit numa branch temporária (o `main`
+   deste repositório é protegido);
+3. gera os instaladores nos quatro sistemas, uma única vez, já com a versão real;
+4. calcula o SHA-256, registra a origem do build (attestation), cria a tag `v<versão>` e publica a release;
+5. apaga a branch temporária.
 
-Tag com sufixo (`v1.1.0-rc1`) vira pre-release e não dispara o aviso de atualização no app. O mesmo workflow roda
-em PR que mexe em `packaging/`, no workflow ou nos submódulos, só gerando os instaladores para conferir.
+Versão com sufixo (`1.1.0-rc1`) vira pre-release e não dispara o aviso de atualização no app. Com o campo `version`
+vazio, o workflow só empacota, sem publicar, como ensaio. Pull request que mexe em `packaging/` ou no próprio
+workflow também roda o empacotamento para conferir.
 
 Os ícones saem de [`packaging/icons/generate.py`](packaging/icons/generate.py) (precisa de Pillow).
 
