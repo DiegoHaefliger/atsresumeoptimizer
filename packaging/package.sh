@@ -34,6 +34,8 @@ common=(
 	--add-modules "$MODULES"
 	--jlink-options "--strip-debug --no-man-pages --no-header-files"
 	--java-options "-Dloader.main=com.diegohaefliger.atsresumeoptimizer.desktop.DesktopApplication"
+	# C1 apenas: a inicialização cai ~25% e o app é de uso individual, sem carga pesada de CPU.
+	--java-options "-XX:TieredStopAtLevel=1"
 	--dest "$BUILD/out"
 )
 

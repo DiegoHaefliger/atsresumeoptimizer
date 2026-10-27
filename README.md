@@ -206,6 +206,10 @@ Ao iniciar, o backend sobe sozinho o `compose.yaml` com **Postgres** (porta 5432
 rodar `docker compose up` na mão, só ter o Docker aberto. O arquivo do currículo não é guardado: no upload o texto
 e os sinais de layout vão para o banco, e o arquivo é descartado.
 
+Para desenvolver com reinício automático, use `./dev.sh` no lugar de `./mvnw spring-boot:run`. Ele sobe o backend com o
+devtools e, a cada arquivo salvo em `src/`, recompila e reinicia sozinho. Se a compilação falhar, o backend segue com a
+versão anterior e avisa no terminal. Enquanto ele estiver rodando, não rode `./mvnw` em outro terminal.
+
 Pronto quando aparecer `Started AtsResumeOptimizerBackendApplication`. A API fica em
 <http://localhost:8080> e a documentação em <http://localhost:8080/swagger-ui.html>.
 
