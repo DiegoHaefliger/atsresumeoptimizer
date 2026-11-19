@@ -98,6 +98,7 @@ Tudo fica numa pasta do seu usuário, fora da pasta onde o programa é instalado
 | Linux   | `/home/<seu usuário>/.ats-resume-optimizer`    |
 
 Nada é enviado para servidor nosso. Só o texto necessário vai para o provedor de IA que você escolher.
+A única exceção é a avaliação do app (menu **Avaliar**, que também aparece sozinha depois que você conclui algo, como uma análise do LinkedIn ou o download de um currículo): só a nota, o texto, a versão e o e-mail opcional são enviados ao autor. Nenhum currículo, vaga ou chave sai do computador.
 
 | O que tem lá           | Para que serve                                                           |
 |------------------------|--------------------------------------------------------------------------|
@@ -263,7 +264,7 @@ Os ícones saem de [`packaging/icons/generate.py`](packaging/icons/generate.py) 
 | Backend falha ao subir falando de Docker    | Docker fechado. Abra o Docker e rode de novo.                                     |
 | `Port 5432 is already in use`               | Outro Postgres na máquina. Pare ele ou mude a porta em `backend/compose.yaml`.   |
 | Front abre, mas toda tela dá erro           | Backend não está rodando em `localhost:8080`, ou ajuste `VITE_API_BASE_URL` no `.env.local`. |
-| Erro de CORS no navegador                   | Front fora de `localhost:5173`. Ajuste `CORS_ALLOWED_ORIGINS` no `backend/.env`. |
+| Erro de CORS no navegador                   | Front fora de `localhost`/`127.0.0.1`. Ajuste `CORS_ALLOWED_ORIGINS` no `backend/.env` (aceita padrão de porta, ex.: `http://localhost:[*]`). |
 | Análise falha logo no começo                | Nenhum provedor de IA configurado ou na fila. Veja o primeiro uso.               |
 
 ### Testes
