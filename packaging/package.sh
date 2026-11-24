@@ -12,8 +12,8 @@ DIST="$ROOT/packaging/dist"
 APP_NAME="ATS Resume Optimizer"
 PACKAGE_NAME="ats-resume-optimizer"
 WIN_UPGRADE_UUID="5b0c6a7e-3f0e-4d55-9a7b-2a4c1e8d9f31"
-# jdeps acha os módulos usados direto; os demais entram por reflexão ou SPI (locale pt-BR, charsets, cripto, zip).
-MODULES="java.base,java.compiler,java.desktop,java.instrument,java.management,java.naming,java.net.http,java.prefs,java.rmi,java.scripting,java.security.jgss,java.sql.rowset,java.xml.crypto,jdk.charsets,jdk.crypto.ec,jdk.jfr,jdk.localedata,jdk.management,jdk.naming.dns,jdk.net,jdk.unsupported,jdk.zipfs"
+# jdeps acha os módulos usados direto; os demais entram por reflexão ou SPI (locale pt-BR, charsets, cripto, zip, Java Access Bridge).
+MODULES="java.base,java.compiler,java.desktop,java.instrument,java.management,java.naming,java.net.http,java.prefs,java.rmi,java.scripting,java.security.jgss,java.sql.rowset,java.xml.crypto,jdk.accessibility,jdk.charsets,jdk.crypto.ec,jdk.jfr,jdk.localedata,jdk.management,jdk.naming.dns,jdk.net,jdk.unsupported,jdk.zipfs"
 
 rm -rf "$BUILD" "$DIST"
 mkdir -p "$BUILD/input" "$DIST"
@@ -34,6 +34,8 @@ common=(
 	--add-modules "$MODULES"
 	--jlink-options "--strip-debug --no-man-pages --no-header-files"
 	--java-options "-Dloader.main=com.diegohaefliger.atsresumeoptimizer.desktop.DesktopApplication"
+	# C1 apenas: a inicialização cai ~25% e o app é de uso individual, sem carga pesada de CPU.
+	--java-options "-XX:TieredStopAtLevel=1"
 	--dest "$BUILD/out"
 )
 
