@@ -8,5 +8,6 @@ graphify-out/
 .claude/
 .github/*
 !.github/workflows/
+!.github/ISSUE_TEMPLATE/
 packaging/build/
 packaging/dist/
