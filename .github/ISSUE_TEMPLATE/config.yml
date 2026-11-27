@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Dúvidas de uso
+    url: https://chat.whatsapp.com/IZz28uFPAIF4Z31Htp4fP9
+    about: Como usar o app, configurar a IA ou interpretar uma análise. Bugs vão nas issues.
